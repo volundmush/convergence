@@ -1,0 +1,84 @@
+{
+  "server": {
+    "telnet": 4201,
+    "ws": 4202,
+    "wsPort": 4202,
+    "http": 4202,
+    "apiPort": 4203,
+    "db": "data/typegraph.db",
+    "plugins": [
+      "@ursamu/globals",
+      "@ursamu/help",
+      "@ursamu/jobs",
+      "@ursamu/bbs",
+      "@ursamu/mail",
+      "@ursamu/wiki",
+      "@ursamu/channels",
+      "@ursamu/builder",
+      "@ursamu/web",
+      "@ursamu/site"
+    ]
+  },
+  "game": {
+    "name": "convergence",
+    "description": "A custom UrsaMU game",
+    "version": "0.0.1",
+    "playerStart": "1",
+    "text": {
+      "connect": "text/default_connect.txt"
+    },
+    "layout": {
+      "header": "[center(%ch%cy%0%cn,%1,%cg=%cn)]",
+      "divider": "[center(%ch%cy%0%cn,%1,%cg-%cn)]",
+      "footer": "[repeat(%cg=%cn,%1)]"
+    }
+  },
+  "plugins": {
+    "channels": {
+      "defaults": [
+        {
+          "name": "Public",
+          "alias": "pub",
+          "lock": "connected"
+        },
+        {
+          "name": "Admin",
+          "alias": "ad",
+          "lock": "connected admin+"
+        }
+      ]
+    },
+    "site": {
+      "serveRoot": true,
+      "title": "convergence",
+      "skin": "default",
+      "nav": [
+        {
+          "id": "home",
+          "label": "Home",
+          "href": "/",
+          "order": 10
+        },
+        {
+          "id": "wiki",
+          "label": "Wiki",
+          "href": "/wiki/",
+          "order": 20
+        },
+        {
+          "id": "help",
+          "label": "Help",
+          "href": "/help/",
+          "order": 30
+        },
+        {
+          "id": "play",
+          "label": "Play Online",
+          "href": "/play",
+          "order": 40,
+          "require": "connected"
+        }
+      ]
+    }
+  }
+}
